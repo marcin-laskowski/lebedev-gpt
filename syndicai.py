@@ -1,6 +1,6 @@
 # from source.generate_transformers import main, parse_args, get_model
 
-class PythonPredictor:
+# class PythonPredictor:
     # def __init__(self, config):
     #     parser = parse_args()
     #     args = parser.parse_args(['--model_type', 'gpt2', 
