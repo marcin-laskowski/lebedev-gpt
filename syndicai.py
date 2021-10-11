@@ -18,5 +18,5 @@ class PythonPredictor:
 
     def predict(self, payload):
         self.args.prompt = payload['text']
-        output_text = self.model.main(model, tokenizer, args)
+        output_text = main(model, tokenizer, args)
         return output_text
