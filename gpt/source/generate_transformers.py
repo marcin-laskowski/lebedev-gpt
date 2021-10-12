@@ -202,7 +202,7 @@ def get_model(args):
         raise KeyError("the model {} you specified is not supported. You are welcome to add it and open a PR :)")
 
     tokenizer = tokenizer_class.from_pretrained(args.model_name_or_path)
-    model = model_class.from_pretrained(args.model_name_or_path)
+    model = model_class.from_pretrained(args.model_name_or_path, from_tf=True)
     model.to(args.device)
     
     return model, tokenizer
