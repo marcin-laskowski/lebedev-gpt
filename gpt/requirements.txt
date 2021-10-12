@@ -1,5 +1,4 @@
 numpy
 argparse
-logging
 torch==1.4.0
 transformers==3.5.0
