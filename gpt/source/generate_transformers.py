@@ -191,8 +191,6 @@ def parse_args():
 def get_model(args):
     args.device = torch.device("cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu")
     args.n_gpu = 0 if args.no_cuda else torch.cuda.device_count()
-    logger.info('Chosen device:\n')
-    logger.info(args.device)
     # set_seed(args)
 
     # Initialize the model and tokenizer
@@ -203,7 +201,9 @@ def get_model(args):
         raise KeyError("the model {} you specified is not supported. You are welcome to add it and open a PR :)")
 
     tokenizer = tokenizer_class.from_pretrained(args.model_name_or_path)
+    logger.info('tokenizer is loaded')
     model = model_class.from_pretrained(args.model_name_or_path, from_tf=True)
+    logger.info('model is loaded')
     model.to(args.device)
     
     return model, tokenizer
