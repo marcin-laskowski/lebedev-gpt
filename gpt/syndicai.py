@@ -4,7 +4,7 @@ class PythonPredictor:
     def __init__(self, config):
         parser = parse_args()
         args = parser.parse_args(['--model_type', 'gpt2', 
-                                  '--model_name_or_path', './model',
+                                  '--model_name_or_path', 'model',
                                   '--k', '50',
                                   '--p', '0.95',
                                   '--length', '100',
