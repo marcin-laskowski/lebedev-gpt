@@ -1,6 +1,5 @@
 nltk==3.6.1
 numpy==1.19.5
-pandas==1.2.4
 sentencepiece==0.1.91
 tensorflow==2.6.0
 torch==1.4.0
