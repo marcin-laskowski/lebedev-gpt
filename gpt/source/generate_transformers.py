@@ -205,7 +205,9 @@ def get_model(args):
     logger.info('tokenizer is loaded')
     config = GPT2Config.from_json_file(args.model_name_or_path + 'config.json')
     logger.info('config file is loaded')
-    model = model_class.from_pretrained(args.model_name_or_path, config=config)
+    # model = model_class.from_pretrained(args.model_name_or_path, config=config)
+    model = GPT2LMHeadModel(config)
+    model.load_state_dict(torch.load(args.model_name_or_path + 'model_weights.pth'))
     logger.info('model is loaded')
     model.to(args.device)
     
