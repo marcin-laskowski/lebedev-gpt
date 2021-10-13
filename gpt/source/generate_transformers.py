@@ -29,6 +29,7 @@ from transformers import (
     CTRLTokenizer,
     GPT2LMHeadModel,
     GPT2Tokenizer,
+    GPT2Config,
     OpenAIGPTLMHeadModel,
     OpenAIGPTTokenizer,
     TransfoXLLMHeadModel,
@@ -199,10 +200,12 @@ def get_model(args):
         model_class, tokenizer_class = MODEL_CLASSES[args.model_type]
     except KeyError:
         raise KeyError("the model {} you specified is not supported. You are welcome to add it and open a PR :)")
-    logger.info('before tokenizer')
+    logger.info('before loadings')
     tokenizer = tokenizer_class.from_pretrained(args.model_name_or_path)
     logger.info('tokenizer is loaded')
-    model = model_class.from_pretrained(args.model_name_or_path, force_download=True)
+    config = GPT2Config.from_json_file(args.model_name_or_path + 'config.json')
+    logger.info('config file is loaded')
+    model = model_class.from_pretrained(args.model_name_or_path + 'pytorch_model.bin', from_pt=True, config=config)
     logger.info('model is loaded')
     model.to(args.device)
     
