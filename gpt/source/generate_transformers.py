@@ -202,7 +202,7 @@ def get_model(args):
 
     tokenizer = tokenizer_class.from_pretrained(args.model_name_or_path)
     logger.info('tokenizer is loaded')
-    model = model_class.from_pretrained(args.model_name_or_path, from_tf=True)
+    model = model_class.from_pretrained(args.model_name_or_path)
     logger.info('model is loaded')
     model.to(args.device)
     
