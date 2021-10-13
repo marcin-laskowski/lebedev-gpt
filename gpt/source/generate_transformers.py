@@ -189,6 +189,7 @@ def parse_args():
     return parser
 
 def get_model(args):
+    logger.info(os.listdir())
     args.device = torch.device("cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu")
     args.n_gpu = 0 if args.no_cuda else torch.cuda.device_count()
     # set_seed(args)
