@@ -1,4 +1,6 @@
 import gdown
+import logging
+from os import listdir
 from source.generate_transformers import main, parse_args, get_model
 
 class PythonPredictor:
@@ -16,6 +18,9 @@ class PythonPredictor:
         url = 'https://drive.google.com/uc?id=1TsmlmEMGOVw9ftCbuYt7lxYrvRS31tT8'
         output = '/tmp/model_weights.pth'
         gdown.download(url, output)
+        
+        logger.info(listdir())
+        logger.info(listdir('/tmp/'))
 
         model, tokenizer = get_model(args, output)
         self.args = args
