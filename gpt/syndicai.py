@@ -18,6 +18,11 @@ class PythonPredictor:
         url = 'https://drive.google.com/uc?id=1TsmlmEMGOVw9ftCbuYt7lxYrvRS31tT8'
         output = '/tmp/model_weights.pth'
         gdown.download(url, output)
+
+        logging.basicConfig(
+            format="%(asctime)s - %(levelname)s - %(name)s -   %(message)s", datefmt="%m/%d/%Y %H:%M:%S", level=logging.INFO,
+        )
+        logger = logging.getLogger(__name__)
         
         logger.info(listdir())
         logger.info(listdir('/tmp/'))
