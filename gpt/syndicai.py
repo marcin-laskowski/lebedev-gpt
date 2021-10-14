@@ -1,3 +1,4 @@
+import gdown
 from source.generate_transformers import main, parse_args, get_model
 
 class PythonPredictor:
@@ -11,7 +12,12 @@ class PythonPredictor:
                                   '--repetition_penalty', '5',
                                   '--num_return_sequences', '1',
                                   '--no_cuda'])
-        model, tokenizer = get_model(args)
+        
+        url = 'https://drive.google.com/uc?id=1TsmlmEMGOVw9ftCbuYt7lxYrvRS31tT8'
+        output = '/tmp/model_weights.pth'
+        gdown.download(url, output)
+
+        model, tokenizer = get_model(args, output)
         self.args = args
         self.model = model
         self.tokenizer = tokenizer

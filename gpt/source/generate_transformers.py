@@ -190,7 +190,7 @@ def parse_args():
     return parser
 
 import pickle
-def get_model(args):
+def get_model(args, path_to_model_weights):
     args.device = torch.device("cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu")
     args.n_gpu = 0 if args.no_cuda else torch.cuda.device_count()
     # set_seed(args)
@@ -208,8 +208,7 @@ def get_model(args):
     logger.info('config file is loaded')
     # model = model_class.from_pretrained(args.model_name_or_path)
     model = model_class(config)
-    logger.info(args.model_name_or_path + 'model_weights.pth')
-    model.load_state_dict(torch.load(args.model_name_or_path + 'model_weights.pth'), strict=False)
+    model.load_state_dict(torch.load(path_to_model_weights))
     logger.info('model is loaded')
     model.to(args.device)
     
