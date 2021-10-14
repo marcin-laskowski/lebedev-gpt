@@ -209,7 +209,7 @@ def get_model(args):
     # model = model_class.from_pretrained(args.model_name_or_path)
     model = model_class(config)
     logger.info(args.model_name_or_path + 'model_weights.pth')
-    model.load_state_dict(torch.load(args.model_name_or_path + 'model_weights.pth'))
+    model.load_state_dict(torch.load(args.model_name_or_path + 'model_weights.pth'), strict=False)
     logger.info('model is loaded')
     model.to(args.device)
     
